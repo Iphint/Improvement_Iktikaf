@@ -1,0 +1,398 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabelIktikaf renders correctly with dummy data 1`] = `
+<RCTScrollView
+  style={
+    {
+      "backgroundColor": "#fff",
+      "flex": 1,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        {
+          "backgroundColor": "#f2f2f2",
+          "borderBottomColor": "#ccc",
+          "borderBottomWidth": 1,
+          "flexDirection": "row",
+          "paddingHorizontal": 20,
+          "paddingVertical": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "flex": 1,
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Malam
+      </Text>
+      <Text
+        style={
+          {
+            "flex": 1,
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Jumlah Doa
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "borderBottomColor": "#ccc",
+            "borderBottomWidth": 1,
+            "flexDirection": "row",
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+          },
+          {
+            "backgroundColor": "white",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        Malam 21
+      </Text>
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        150
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "borderBottomColor": "#ccc",
+            "borderBottomWidth": 1,
+            "flexDirection": "row",
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+          },
+          {
+            "backgroundColor": "orange",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        Malam 22
+      </Text>
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        250
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "borderBottomColor": "#ccc",
+            "borderBottomWidth": 1,
+            "flexDirection": "row",
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+          },
+          {
+            "backgroundColor": "orange",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        Malam 23
+      </Text>
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        350
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "borderBottomColor": "#ccc",
+            "borderBottomWidth": 1,
+            "flexDirection": "row",
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+          },
+          {
+            "backgroundColor": "orange",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        Malam 24
+      </Text>
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        450
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "borderBottomColor": "#ccc",
+            "borderBottomWidth": 1,
+            "flexDirection": "row",
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+          },
+          {
+            "backgroundColor": "orange",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        Malam 25
+      </Text>
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        550
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "borderBottomColor": "#ccc",
+            "borderBottomWidth": 1,
+            "flexDirection": "row",
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+          },
+          {
+            "backgroundColor": "green",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        Malam 26
+      </Text>
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        650
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "borderBottomColor": "#ccc",
+            "borderBottomWidth": 1,
+            "flexDirection": "row",
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+          },
+          {
+            "backgroundColor": "green",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        Malam 27
+      </Text>
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        750
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "borderBottomColor": "#ccc",
+            "borderBottomWidth": 1,
+            "flexDirection": "row",
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+          },
+          {
+            "backgroundColor": "green",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        Malam 28
+      </Text>
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        850
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "borderBottomColor": "#ccc",
+            "borderBottomWidth": 1,
+            "flexDirection": "row",
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+          },
+          {
+            "backgroundColor": "green",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        Malam 29
+      </Text>
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        950
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "borderBottomColor": "#ccc",
+            "borderBottomWidth": 1,
+            "flexDirection": "row",
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+          },
+          {
+            "backgroundColor": "blue",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        Malam 30
+      </Text>
+      <Text
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        1050
+      </Text>
+    </View>
+  </View>
+</RCTScrollView>
+`;
