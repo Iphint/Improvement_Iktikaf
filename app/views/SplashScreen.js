@@ -1,14 +1,15 @@
 import {
   StyleSheet,
   View,
-  Image,
   Text,
   TouchableOpacity,
   Dimensions,
   ActivityIndicator,
 } from 'react-native';
 import { useFonts } from 'expo-font';
+import Animated, { FadeInDown, FadeInLeft, FadeInRight, FadeInUp } from 'react-native-reanimated';
 import React from 'react';
+import { Lantern } from '../../assets/images';
 
 const SplashScreen = ({ navigation }) => {
   const windowHeight = Dimensions.get('window').height;
@@ -29,21 +30,27 @@ const SplashScreen = ({ navigation }) => {
   return (
     <View style={[styles.container, { height: windowHeight }]}>
       <View>
-        <Image
+        <Animated.Image
+          entering={FadeInUp.delay(200).duration(1000).springify().damping(3)}
           style={styles.image}
-          source={require('../../assets/images/muslim.png')}
+          source={Lantern}
         />
       </View>
       <View style={styles.viewContainer}>
-        <Text style={styles.title}>Pray 10 last day of Ramadhan</Text>
-        <Text style={styles.subTitle}>
+        <Animated.Text
+          entering={FadeInLeft.delay(200).duration(1000).springify()}
+          style={styles.title}
+        >
+          Pray 10 last day of Ramadhan
+        </Animated.Text>
+        <Animated.Text entering={FadeInRight.delay(200).duration(1000).springify()} style={styles.subTitle}>
           Push your limit to get the highest rank on Jannah
-        </Text>
+        </Animated.Text>
       </View>
       <TouchableOpacity onPress={() => navigation.navigate('mainapp')}>
-        <View style={styles.viewButton}>
+        <Animated.View entering={FadeInDown.delay(200).duration(2000).springify()} style={styles.viewButton}>
           <Text style={styles.textTest}>Go Get it</Text>
-        </View>
+        </Animated.View>
       </TouchableOpacity>
     </View>
   );

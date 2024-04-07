@@ -1,11 +1,16 @@
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
 
 const Settings = () => {
+  const [resetConfirmation, setResetConfirmation] = useState(false);
+
+  const handleResetCounter = () => {
+    setResetConfirmation(true);
+  };
+
   return (
     <View style={styles.container}>
       <Text>This feature will comming soon 🙏🙏🙏</Text>
-      <Text>Dev by Iphint</Text>
     </View>
   );
 };

@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Dimensions,
@@ -9,31 +10,62 @@ import {
   View,
 } from 'react-native';
 import { useFonts } from 'expo-font';
-import React, { useEffect, useState } from 'react';
-import Fasting from '../../assets/images/fasting.png';
-import Salat from '../../assets/images/salat.png';
-import Baca from '../../assets/images/baca.png';
-import Praying from '../../assets/images/praying.png';
-import Rice from '../../assets/images/rice.png';
-import Pr from '../components/Pr';
 import { useNavigation } from '@react-navigation/native';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
+import { Baca, Fasting, Praying, Rice, Salat } from '../../assets/images';
+import Pr from '../components/Pr';
+
+const agenda = [
+  {
+    title: 'puasa',
+    image: Fasting,
+    screen: 'fasting',
+  },
+  {
+    title: 'tarawih',
+    image: Salat,
+    screen: 'tarawih',
+  },
+  {
+    title: 'tadarus',
+    image: Baca,
+    screen: 'tadarus',
+  },
+  {
+    title: 'iktikaf dan lailatul qadr',
+    image: Praying,
+    screen: 'iktikaf',
+  },
+  {
+    title: 'zakat',
+    image: Rice,
+    screen: 'zakat',
+  },
+];
 
 const Homepage = () => {
   const [index, setIndex] = useState(0);
   const [showPr, setShowPr] = useState(false);
   const navigation = useNavigation();
   const windowHeight = Dimensions.get('window').height;
+
   const sentences = [
     "It doesn't feel like Ramadan will end",
     'But we should make the most of it',
     'Keep your spirits up',
     'And cherish every moment',
   ];
+
   const [fontsLoaded] = useFonts({
-    'Bold' : require('../../assets/fonts/Poppins-Bold.ttf'),
-    'Medium' : require('../../assets/fonts/Poppins-Medium.ttf'),
-    'Regular' : require('../../assets/fonts/Poppins-Regular.ttf'),
-  })
+    Bold: require('../../assets/fonts/Poppins-Bold.ttf'),
+    Medium: require('../../assets/fonts/Poppins-Medium.ttf'),
+    Regular: require('../../assets/fonts/Poppins-Regular.ttf'),
+  });
+
   if (!fontsLoaded) {
     return (
       <View style={[styles.container, { height: windowHeight }]}>
@@ -41,34 +73,6 @@ const Homepage = () => {
       </View>
     );
   }
-
-  const agenda = [
-    {
-      title: 'puasa',
-      image: Fasting,
-      screen: 'fasting',
-    },
-    {
-      title: 'tarawih',
-      image: Salat,
-      screen: 'tarawih',
-    },
-    {
-      title: 'tadarus',
-      image: Baca,
-      screen: 'tadarus',
-    },
-    {
-      title: 'iktikaf dan lailatul qadr',
-      image: Praying,
-      screen: 'iktikaf',
-    },
-    {
-      title: 'zakat',
-      image: Rice,
-      screen: 'zakat',
-    },
-  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -84,57 +88,72 @@ const Homepage = () => {
     navigation.navigate(screenName);
   };
 
-  const togglePrList = () => {
-    setShowPr(!showPr);
+  const animatedStyles = (index) => {
+    const translateY = useSharedValue(50);
+    const opacity = useSharedValue(0);
+
+    useEffect(() => {
+      setTimeout(() => {
+        translateY.value = withTiming(0, { duration: 1000 });
+        opacity.value = withTiming(1, { duration: 1000 });
+      }, index * 1000);
+    }, []);
+
+    const animatedStyle = useAnimatedStyle(() => {
+      return {
+        transform: [{ translateY: translateY.value }],
+        opacity: opacity.value,
+      };
+    });
+
+    return animatedStyle;
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.previewIntro}>
-        <Text style={styles.title}>Wellcome,</Text>
-        <Text style={styles.subTitle}>{sentences[index]}</Text>
+        <Animated.Text style={styles.title}>Welcome,</Animated.Text>
+        <Animated.Text style={styles.subTitle}>
+          {sentences[index]}
+        </Animated.Text>
       </View>
-      {/*main home menu*/}
       <View>
-        <Text style={styles.titleAgenda}>Target Agenda</Text>
+        <Animated.Text style={styles.titleAgenda}>
+          Target Agenda Ramadhan
+        </Animated.Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {agenda.map((item, index) => (
+          {agenda.map((item, idx) => (
             <TouchableOpacity
-              key={index}
+              key={idx}
               activeOpacity={0.5}
               onPress={() => handleCardPress(item.screen)}
             >
-              <View style={styles.card} key={index}>
+              <Animated.View
+                style={[
+                  styles.card,
+                  animatedStyles(idx),
+                ]}
+              >
                 <Image style={styles.image} source={item.image} />
                 <Text style={styles.text}>{item.title}</Text>
-              </View>
+              </Animated.View>
             </TouchableOpacity>
           ))}
         </ScrollView>
       </View>
-
-      {/* show PR */}
-      {/* <View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-          }}
-        >
+      <View>
+        <View style={styles.prButtonContainer}>
           <Text style={styles.titlePR}>Jangan lupa PR 13 nya</Text>
-          <TouchableOpacity style={styles.prButton} onPress={togglePrList}>
+          <TouchableOpacity style={styles.prButton} onPress={() => setShowPr(!showPr)}>
             <Text style={styles.prButtonText}>{showPr ? 'X' : 'Open'}</Text>
           </TouchableOpacity>
         </View>
         {showPr && (
-          <View>
-            <View style={{ marginTop: 10 }}>
-              <Pr />
-            </View>
+          <View style={{ marginTop: 10 }}>
+            <Pr />
           </View>
         )}
-      </View> */}
+      </View>
     </View>
   );
 };
@@ -144,8 +163,13 @@ export default Homepage;
 const styles = StyleSheet.create({
   container: { backgroundColor: '#627254', flex: 1 },
   previewIntro: { marginVertical: 30, marginHorizontal: 20 },
-  title: { fontSize: 40, fontWeight: '500', color: '#fff', fontFamily: "Bold" },
-  subTitle: { fontSize: 20, fontWeight: '200', color: '#fff', fontFamily :"Medium" },
+  title: { fontSize: 40, fontWeight: '500', color: '#fff', fontFamily: 'Bold' },
+  subTitle: {
+    fontSize: 20,
+    fontWeight: '200',
+    color: '#fff',
+    fontFamily: 'Medium',
+  },
   card: {
     backgroundColor: '#76885B',
     borderRadius: 10,
@@ -169,20 +193,25 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    fontFamily: 'Regular'
+    fontFamily: 'Regular',
   },
   titleAgenda: {
     fontSize: 15,
     fontWeight: '500',
     color: '#fff',
     marginLeft: 20,
-    fontFamily: 'Regular'
+    fontFamily: 'Regular',
   },
   titlePR: {
     fontSize: 15,
     fontWeight: '500',
     color: '#fff',
-    fontFamily: 'Regular'
+    fontFamily: 'Regular',
+  },
+  prButtonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
   prButton: {
     backgroundColor: '#76885B',

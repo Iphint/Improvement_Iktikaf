@@ -1,6 +1,7 @@
 {
   "hadis": [
     {
+      "id": 1,
       "title": "PR no 1",
       "description": "Tiada tuhan selain Allah YME, tiada sekutu baginya, dan baginya segala puji, dan dia maha kuasa atas segalanya",
       "arab": "لا إلهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَريكَ لَهُ ، لَهُ المُلْكُ وَلَهُ الحَمْدُ ؛ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
@@ -13,6 +14,7 @@
       ]
     },
     {
+      "id": 2,
       "title": "PR no 2",
       "description": "Maha Suci Allah dengan segala puji baginya",
       "arab": "اسُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
@@ -22,6 +24,7 @@
       ]
     },
     {
+      "id": 3,
       "title": "PR no 3",
       "description": "Maha Suci Allah dengan segala puji baginya, Maha Suci Allah yang maha agung.",
       "arab": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ سُبْحَانَ اللَّهِ العَظِيْمِ",
@@ -32,6 +35,7 @@
       ]
     },
     {
+      "id": 4,
       "title": "PR no 4",
       "description": "Tidak ada Tuhan yang berhak disembah kecuali Allah, dan Allah itu maha Agung, tidak ada daya dan tidak pula kekuatan kecuali karena Allah yang Maha Tinggi dan Maha Agung.",
       "arab": "لاَ إِلَهَ إِلاَّ اللَّهُ وَاللَّهُ أَكْبَرُ وَلَاحَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ",
@@ -41,6 +45,7 @@
       ]
     },
     {
+      "id": 5,
       "title": "PR no 5",
       "description": "Aku memohon ampun kepada Allah, Dzat yang tidak ada sesembahan kecuali Dia. dan aku bertaubat kepadanya",
       "arab": "أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيَّ الْقَيُّومَ وَأَتُوبُ إِلَيْه",
@@ -50,6 +55,7 @@
       ]
     },
     {
+      "id": 6,
       "title": "PR no 6",
       "description": "Kami ridho Allah Swt sebagai Tuhanku, Islam sebagai agamaku, dan Nabi Muhammad sebagai Nabi dan Rasul.",
       "arab": "رَضِيتُ بِاللَّهِ رَبًّا ، وَبِالْإِسْلَامِ دِينًا ، وَبِمُحَمَّدٍ نَبِيّاً وَرَسُولًا",
@@ -59,6 +65,7 @@
       ]
     },
     {
+      "id": 7,
       "title": "PR no 7",
       "description": "Mahasuci Engkau ya Allah dan engan memuji kepada-Mu saya bersaksi bahwa tidak ada Tuhan selain Engkau. Saya memohon ampun dan bertaubat hanya kepada-Mu.",
       "arab": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ",
@@ -68,6 +75,7 @@
       ]
     },
     {
+      "id": 8,
       "title": "PR no 8",
       "description": "Ya tuhanku, ampunilah saya, dan terimalah taubatku, sesungguhnya engkau adalah Dzat yang menerima taubat lagi maha penyayang.",
       "arab": "رَبِّ اغْفِرْ لِيْ وَتُبْ عَلَيَّ إِنَّكَ أَنْتَ التَّوَّابُ الرَّحِيْمُ",
@@ -77,6 +85,7 @@
       ]
     },
     {
+      "id": 9,
       "title": "PR no 9",
       "description": "Dengan menyebut nama Allah yang bersama nama-Nya sesuatu itu tidak berbahaya di bumi dan di langit. Dan Dia Maha Mendengar lagi Mengetahui.",
       "arab": "بِسْمِ اللَّهِ الَّذِىْ لاَيَضُرُّ مَعَ اسْمِهِ شَيْئٌ فِى اْلاَرِضِ وَلاَ فِى السَّمَآءِ وَهُوَ السَّمِيْعُ الْعَلِيْمُ",
@@ -86,6 +95,7 @@
       ]
     },
     {
+      "id": 10,
       "title": "PR no 10",
       "description": "Ya Allah engkau tuhanku, tiada tihan selain engkau, engkau telah menciptakanku, dan aku hambamu, dan aku atas petunjukmu dan janji mu semampuku, aku berlindung kepadamu dari jeleknya apa - apa yang aku telah perbuat, dan aku kembali kepadamu berkat nikamt mu (yang telah engkau berikan) kepadaku, dan aku mengakui pada dosa - dosaku, maka ampunilah dosa - dosaku, sesungguhnya tiada yang bisa mengampuni dosa - dosa selain engkau.",
       "arab": "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ أَعُوْذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ وَأَبُوءُ إِلَكَ بِنِعْمَتِكَ عَلَيَّ وَأَعْتَرِفُ بِذُنُوْبِئ فَاغْفِرْ لِي اﻟﺬُّﻧُﻮﺏِ إِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
@@ -95,6 +105,7 @@
       ]
     },
     {
+      "id": 11,
       "title": "PR no 11",
       "description": "Tiada Tuhan yang berhak disembah kecuali Allah Yang Maha Agung lagi Lemah-Lembut, Tiada Tuhan yang berhak disembah kecuali Allah Tuhan Pemilik Arsy yang agung, Tiada Tuhan yang berhak disembah kecuali Allah Tuhan pemilik langit dan bumi, dan pemilik Arsy yang mulia",
       "arab": "لَا إِلَهَ إِلَّا اللهُ العَظِيْمُ الحَلِيْمُ. لَا إِلَهَ إِلَّا اللهُ رَبُّ العَرْشِ العَظِيْمِ لَا إِلَهَ إِلَّا اللهُ رَبُّ السَّمَوَاتِ وَ الأَرْض وَ رَبُّ العَرْشِ الكَرِيْمِ",
@@ -104,6 +115,7 @@
       ]
     },
     {
+      "id": 12,
       "title": "PR no 12",
       "description": "Mahasuci Allah, segala puji bagi Allah, tiada sesembahan yang berhak disembah selain Allah, dan Allah Maha Besar",
       "arab": "سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ وَلاَ إِلَهَ إِلاَّ اللَّهُ وَاللَّهُ أَكْبَرُ",
@@ -116,6 +128,7 @@
       ]
     },
     {
+      "id": 13,
       "title": "PR no 13",
       "description": "Segala puji bagi Allah yang menyelamatkan kami dari bencana yang menimpa ini, dan mengutamakan kami melebihi orang-orang dengan kelebihan yang nyata",
       "arab": "الـحَمْدُ لِلَّـهِ الَّذِي عَافَانِي مِمَّـا ابْتَلاكَ بِهِ، وَفَضَّلَنِي عَلَى كَثيرٍ مِمَّنْ خَلَقَ تَفْضِيلاً",

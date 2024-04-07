@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator, Dimensions, Alert } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ActivityIndicator,
+  Dimensions,
+  Alert,
+} from 'react-native';
 import TabelIktikaf from '../components/TabelIktikaf';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFonts } from 'expo-font';
@@ -68,21 +76,15 @@ const Iktikaf = () => {
     }
   };
 
-  const resetDoa = async () => {
-    if (malamDoa) {
-       setJumlahDoa(async (prevState) => {
-         const newState = { ...prevState };
-         delete newState[malamDoa];
-         try {
-           await AsyncStorage.setItem('jumlahDoa', JSON.stringify(newState));
-         } catch (e) {
-           console.error(e);
-         }
-         return newState;
-       });
-       setMalamDoa(null);
+  const resetAllDoa = async () => {
+    try {
+      await AsyncStorage.removeItem('jumlahDoa'); 
+      setJumlahDoa({});
+    } catch (e) {
+      console.error(e);
     }
-   };
+  };
+  
 
   const simpanDoa = (malam) => {
     setMalamDoa(malam);
@@ -114,7 +116,7 @@ const Iktikaf = () => {
       </View>
       <View style={styles.counterContainer}>
         <Text style={styles.counterText}>
-          Ayo gas 1000x : {malamDoa && `(Malam ${malamDoa})`}
+          Ayo gas 1000 x : {malamDoa && `(Malam ${malamDoa})`}
         </Text>
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
           <TouchableOpacity style={styles.button} onPress={tambahDoa}>
@@ -122,14 +124,14 @@ const Iktikaf = () => {
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={openPanel}>
             <Text style={styles.buttonText}>Pilih malam berapa</Text>
-          </TouchableOpacity> 
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.buttonReset} onPress={resetDoa}>
-          <Text style={styles.buttonText}>Reset</Text>
+        <TouchableOpacity style={styles.buttonReset}onPress={resetAllDoa}>
+          <Text style={styles.buttonText}>Reset all counter</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.tableContainer}>
-        <TabelIktikaf malamDoa={malamDoa} jumlahDoa={jumlahDoa} />
+        <TabelIktikaf malamDoa={malamDoa} jumlahDoa={jumlahDoa} setJumlahDoa={setJumlahDoa}/>
       </View>
       <SwipeablePanel
         fullWidth
@@ -140,6 +142,7 @@ const Iktikaf = () => {
         isActive={isPanelActive}
       >
         <View style={styles.centeredView}>
+          <Text style={styles.textPilihMalam}>Piih malam berapa</Text>
           <View style={styles.modalView}>
             {Array.from({ length: 10 }, (_, i) => i + 21).map((malam) => (
               <TouchableOpacity
@@ -181,6 +184,11 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontFamily: 'SchMedium',
     textAlign: 'right',
+  },
+  textPilihMalam: {
+    color: 'gray',
+    fontWeight: 'bold',
+    fontFamily: 'Regular'
   },
   counterContainer: {
     padding: 20,

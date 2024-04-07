@@ -7,13 +7,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFonts } from 'expo-font';
 import hadisData from '../data/PR.json';
-import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Pr = () => {
-  const navigation = useNavigation()
   const [fontsLoaded] = useFonts({
     Bold: require('../../assets/fonts/Poppins-Bold.ttf'),
     Medium: require('../../assets/fonts/Poppins-Medium.ttf'),
@@ -24,6 +23,59 @@ const Pr = () => {
     SchSemiBold: require('../../assets/fonts/ScheherazadeNew-SemiBold.ttf'),
   });
   const windowHeight = Dimensions.get('window').height;
+  const [hitungan, setHitungan] = useState([]);
+
+  useEffect(() => {
+    const loadHitunganFromStorage = async () => {
+      try {
+        const savedHitungan = await AsyncStorage.getItem('hitungan');
+        if (savedHitungan !== null) {
+          setHitungan(JSON.parse(savedHitungan));
+        }
+      } catch (error) {
+        console.error('Error loading hitungan from storage:', error);
+      }
+    };
+
+    loadHitunganFromStorage();
+  }, []);
+
+  const saveHitunganToStorage = async () => {
+    try {
+      await AsyncStorage.setItem('hitungan', JSON.stringify(hitungan));
+    } catch (error) {
+      console.error('Error saving hitungan to storage:', error);
+    }
+  };
+
+  const handleHitung = (index) => {
+    const newHitungan = [...hitungan];
+    newHitungan[index] = (newHitungan[index] || 0) + 1;
+    setHitungan(newHitungan);
+  };
+
+  const handleReset = (index) => {
+    const newHitungan = [...hitungan];
+    newHitungan[index] = 0;
+    setHitungan(newHitungan);
+  };
+
+  useEffect(() => {
+    saveHitunganToStorage();
+  }, [hitungan]);
+
+  const getCountBackgroundColor = (count) => {
+    if (count > 100) {
+      return '#C5E898';
+    } else if (count > 50) {
+      return '#CCD3CA';
+    } else if (count > 30) {
+      return '#FFA500';
+    } else {
+      return '#76885B';
+    }
+  };
+
   if (!fontsLoaded) {
     return (
       <View style={[styles.container, { height: windowHeight }]}>
@@ -31,11 +83,12 @@ const Pr = () => {
       </View>
     );
   }
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         {hadisData.hadis.map((item, index) => (
-          <View style={styles.card} key={index}>
+          <TouchableOpacity style={[styles.card, { backgroundColor: getCountBackgroundColor(hitungan[index] || 0) }]} key={index} onPress={() => handleHitung(index)} activeOpacity={0.5}>
             <Text style={styles.title}>{item.title}</Text>
             <Text style={styles.arab}>{item.arab}</Text>
             <Text style={styles.praktek}>{item.praktek}</Text>
@@ -45,14 +98,22 @@ const Pr = () => {
                 {keutamaan}
               </Text>
             ))}
-            <View style={{ alignItems: 'flex-end' }}>
-              <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('detailpr')}>
-                <View style={styles.count}>
-                  <Text style={{ fontFamily: 'Medium' }}>12</Text>
-                </View>
+            <View style={styles.containerButton}>
+              <View style={styles.count}>
+                <Text style={{ fontFamily: 'Medium' }}>
+                  {hitungan[index] || 0}
+                </Text>
+              </View>
+              <TouchableOpacity
+                style={styles.resetPr}
+                onPress={() => handleReset(index)}
+              >
+                <Text style={{ color: 'white', fontFamily: 'Medium' }}>
+                  Reset
+                </Text>
               </TouchableOpacity>
             </View>
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
     </ScrollView>
@@ -87,7 +148,7 @@ const styles = StyleSheet.create({
     fontFamily: 'SchSemiBold',
     color: '#fff',
     fontSize: 20,
-    textAlign: 'right'
+    textAlign: 'right',
   },
   praktek: {
     marginBottom: 5,
@@ -107,9 +168,22 @@ const styles = StyleSheet.create({
   count: {
     backgroundColor: '#DDDDDD',
     alignItems: 'center',
-    width: 60,
-    height: 60,
+    width: 70,
+    height: 50,
     justifyContent: 'center',
-    borderRadius: 20,
+    borderRadius: 10,
+  },
+  resetPr: {
+    width: 70,
+    backgroundColor: '#9B4444',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+  },
+  containerButton: {
+    marginTop: 30,
+    flexDirection: 'row-reverse',
+    justifyContent: 'space-between',
   },
 });
