@@ -77,14 +77,52 @@ const Iktikaf = () => {
   };
 
   const resetAllDoa = async () => {
-    try {
-      await AsyncStorage.removeItem('jumlahDoa'); 
-      setJumlahDoa({});
-    } catch (e) {
-      console.error(e);
-    }
+    Alert.alert(
+      'Konfirmasi',
+      'Apakah kamu yakin akan meresetnya?',
+      [
+        {
+          text: 'Tidak',
+          onPress: () => console.log('Pengguna memilih Tidak'),
+          style: 'cancel',
+        },
+        {
+          text: 'Ya',
+          onPress: async () => {
+            try {
+              await AsyncStorage.removeItem('jumlahDoa');
+              setJumlahDoa({});
+              Alert.alert(
+                'Berhasil',
+                'Semua doa telah di-reset.',
+                [
+                  {
+                    text: 'OK',
+                    onPress: () => console.log('OK Pressed'),
+                  },
+                ],
+                { cancelable: false }
+              );
+            } catch (e) {
+              console.error(e);
+              Alert.alert(
+                'Gagal',
+                'Terjadi kesalahan saat mencoba untuk mereset doa.',
+                [
+                  {
+                    text: 'OK', // Teks tombol
+                    onPress: () => console.log('OK Pressed'),
+                  },
+                ],
+                { cancelable: false }
+              );
+            }
+          },
+        },
+      ],
+      { cancelable: false }
+    );
   };
-  
 
   const simpanDoa = (malam) => {
     setMalamDoa(malam);
@@ -108,30 +146,34 @@ const Iktikaf = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.doaContainer}>
-        <Text style={styles.doaTitle}>Doa Lailatul Qodr</Text>
-        <Text style={styles.doaText}>
-          اَللَّهُمَّ إِنَّكَ عَفُوٌّ كَرِيمٌ تُحِبُّ اَلْعَفْوَ فَاعْفُ عَنِّي
-        </Text>
-      </View>
+      <TouchableOpacity activeOpacity={0.5} onPress={tambahDoa}>
+        <View style={styles.doaContainer}>
+          <Text style={styles.doaTitle}>Doa Lailatul Qodr</Text>
+          <Text style={styles.doaText}>
+            اَللَّهُمَّ إِنَّكَ عَفُوٌّ كَرِيمٌ تُحِبُّ اَلْعَفْوَ فَاعْفُ
+            عَنِّي
+          </Text>
+        </View>
+      </TouchableOpacity>
       <View style={styles.counterContainer}>
         <Text style={styles.counterText}>
           Ayo gas 1000 x : {malamDoa && `(Malam ${malamDoa})`}
         </Text>
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <TouchableOpacity style={styles.button} onPress={tambahDoa}>
-            <Text style={styles.buttonText}>Tambah Doa</Text>
-          </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={openPanel}>
             <Text style={styles.buttonText}>Pilih malam berapa</Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonReset} onPress={resetAllDoa}>
+            <Text style={styles.buttonText}>Reset all counter</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.buttonReset}onPress={resetAllDoa}>
-          <Text style={styles.buttonText}>Reset all counter</Text>
-        </TouchableOpacity>
       </View>
       <View style={styles.tableContainer}>
-        <TabelIktikaf malamDoa={malamDoa} jumlahDoa={jumlahDoa} setJumlahDoa={setJumlahDoa}/>
+        <TabelIktikaf
+          malamDoa={malamDoa}
+          jumlahDoa={jumlahDoa}
+          setJumlahDoa={setJumlahDoa}
+        />
       </View>
       <SwipeablePanel
         fullWidth
@@ -188,7 +230,7 @@ const styles = StyleSheet.create({
   textPilihMalam: {
     color: 'gray',
     fontWeight: 'bold',
-    fontFamily: 'Regular'
+    fontFamily: 'Regular',
   },
   counterContainer: {
     padding: 20,
